@@ -1,7 +1,7 @@
 {
   "name": "react-native-kakao-sdk",
   "version": "0.1.0",
-  "description": "test",
+  "description": "kakao sdk for react native",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
   "types": "lib/typescript/index.d.ts",

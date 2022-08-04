@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { StyleSheet, View, Text } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { multiply } from 'react-native-kakao-sdk';
 
 export default function App() {
@@ -10,9 +10,15 @@ export default function App() {
     multiply(3, 7).then(setResult);
   }, []);
 
+  const onPress = () => {
+    setResult((result ?? 0) + 1);
+  };
+
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Pressable onPress={onPress}>
+        <Text>Result: {result}</Text>
+      </Pressable>
     </View>
   );
 }
