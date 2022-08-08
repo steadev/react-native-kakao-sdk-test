@@ -31,5 +31,15 @@ Pod::Spec.new do |s|
     s.dependency "RCTRequired"
     s.dependency "RCTTypeSafety"
     s.dependency "ReactCommon/turbomodule/core"
+    # 전체 추가
+    s.dependency 'KakaoSDK'
+    # 필요한 모듈 추가
+    s.dependency 'KakaoSDKCommon'  # 필수 요소를 담은 공통 모듈
+    s.dependency 'KakaoSDKAuth'  # 사용자 인증
+    s.dependency 'KakaoSDKUser'  # 카카오 로그인, 사용자 관리
+    s.dependency 'KakaoSDKTalk'  # 친구, 메시지(카카오톡)
+    s.dependency 'KakaoSDKShare'  # 메시지(카카오톡 공유)
+    s.dependency 'KakaoSDKFriend' # 카카오톡 소셜 피커, 리소스 번들 파일 포함
+
   end
 end
