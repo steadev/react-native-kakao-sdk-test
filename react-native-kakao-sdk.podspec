@@ -2,6 +2,7 @@ require "json"
 
 package = JSON.parse(File.read(File.join(__dir__, "package.json")))
 folly_compiler_flags = '-DFOLLY_NO_CONFIG -DFOLLY_MOBILE=1 -DFOLLY_USE_LIBCPP=1 -Wno-comma -Wno-shorten-64-to-32'
+kakao_sdk_version = "2.11.1"
 
 Pod::Spec.new do |s|
   s.name         = "react-native-kakao-sdk"
@@ -31,15 +32,21 @@ Pod::Spec.new do |s|
     s.dependency "RCTRequired"
     s.dependency "RCTTypeSafety"
     s.dependency "ReactCommon/turbomodule/core"
+
+    if defined?($KakaoSDKVersion)
+      Pod::UI.puts "#{s.name}: Using user specified Kakao SDK version '#{$KakaoSDKVersion}'"
+      kakao_sdk_version = $KakaoSDKVersion
+    end
+
     # 전체 추가
-    s.dependency 'KakaoSDK'
+    s.dependency 'KakaoSDK', kakao_sdk_version
     # 필요한 모듈 추가
-    s.dependency 'KakaoSDKCommon'  # 필수 요소를 담은 공통 모듈
-    s.dependency 'KakaoSDKAuth'  # 사용자 인증
-    s.dependency 'KakaoSDKUser'  # 카카오 로그인, 사용자 관리
-    s.dependency 'KakaoSDKTalk'  # 친구, 메시지(카카오톡)
-    s.dependency 'KakaoSDKShare'  # 메시지(카카오톡 공유)
-    s.dependency 'KakaoSDKFriend' # 카카오톡 소셜 피커, 리소스 번들 파일 포함
+    s.dependency 'KakaoSDKCommon', kakao_sdk_version  # 필수 요소를 담은 공통 모듈
+    s.dependency 'KakaoSDKAuth', kakao_sdk_version  # 사용자 인증
+    s.dependency 'KakaoSDKUser', kakao_sdk_version  # 카카오 로그인, 사용자 관리
+    s.dependency 'KakaoSDKTalk', kakao_sdk_version  # 친구, 메시지(카카오톡)
+    s.dependency 'KakaoSDKShare', kakao_sdk_version  # 메시지(카카오톡 공유)
+    s.dependency 'KakaoSDKFriend', kakao_sdk_version # 카카오톡 소셜 피커, 리소스 번들 파일 포함
 
   end
 end
